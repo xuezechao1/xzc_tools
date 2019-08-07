@@ -65,18 +65,18 @@ def funcRunTime(func):
     :param func: 函数
     :return: 函数运行时间
     """
-    def wrapper(args):
+    def wrapper(*args, **kwargs):
         startTime = getTime()
         funcName = str(func).split()[1]
-        output = func(args)
+        output = func(*args, **kwargs)
         endTime = getTime()
+        printInfo(1, str(endTime - startTime) + ' : ' + funcName)
         return output
     return wrapper
 
 def printInfo(grade, info):
     """
     打印信息
-    :param logFile: log文件路径
     :param grade: log等级(1:普通信息, 2:捕获错误信息, 3:可预料错误信息)
     :param info: 信息
     :return: 无
